@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.25)  18 JUL 2024 16:28
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.25)  18 JUL 2024 20:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -673,23 +673,26 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [10]) (./chapters/system calls.tex [11] [12] [13] [14] [15]
 File: pics/syscall评测结果.png Graphic file (type bmp)
 <pics/syscall评测结果.png>
-) [16] (./report_main.aux)
+) (./chapters/Page table.tex [16] [17] [18] [19] [20] [21]
+File: pics/pagetable评测结果.png Graphic file (type bmp)
+<pics/pagetable评测结果.png>
+ [22]) [23] (./report_main.aux)
 
 Package rerunfilecheck Warning: File `report_main.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `report_main.out':
-(rerunfilecheck)             Before: 398DC56445D5162AF9C18F79B028F746;1853
-(rerunfilecheck)             After:  25F5119AB50E28762E090AEC6232B3AD;1943.
+(rerunfilecheck)             Before: 59A3C83CE777D14FA4A2511360E81C16;2731
+(rerunfilecheck)             After:  8E6E440E3CCE4F58B025E2066B894D1E;2821.
  ) 
 Here is how much of TeX's memory you used:
- 17361 strings out of 478580
- 369678 string characters out of 5846528
+ 17466 strings out of 478580
+ 372106 string characters out of 5846528
  2027012 words of memory out of 5000000
- 37181 multiletter control sequences out of 15000+600000
+ 37282 multiletter control sequences out of 15000+600000
  518277 words of font info for 89 fonts, out of 8000000 for 9000
  62 hyphenation exceptions out of 8191
  89i,7n,97p,481b,1940s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on report_main.pdf (16 pages).
+Output written on report_main.pdf (23 pages).

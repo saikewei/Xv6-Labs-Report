@@ -16,3 +16,11 @@
 \contentsline {subsubsection}{\numberline {2.2.2}实现sysinfo}{14}{subsubsection.2.2.2}%
 \contentsline {subsection}{\numberline {2.3}评测结果}{16}{subsection.2.3}%
 \contentsline {subsection}{\numberline {2.4}实验小结}{16}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Lab: Page tables}{17}{section.3}%
+\contentsline {subsection}{\numberline {3.1}实验目的}{17}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}实验步骤}{17}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}实现系统调用加速}{17}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}实现页表打印}{18}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}实现被访问页面侦测}{20}{subsubsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.3}评测结果}{23}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}实验小结}{23}{subsection.3.4}%
