@@ -1,0 +1,115 @@
+\section{Lab: System calls}
+
+\subsection{实验目的}
+
+本实验旨在进一步熟悉系统调用，重点掌握如何添加系统调用，理解系统调用的工作原理，内核态和用户态的联系。
+
+本实验实现了两个系统调用：
+\begin{itemize}
+    \item System call tracing：实现对系统调用的跟踪
+    \item Sysinfo：收集有关正在运行的系统的信息
+\end{itemize}
+
+\subsection{实验步骤}
+
+\subsubsection{实现trace}
+
+\begin{enumerate}
+    \item 首先，根据提示，在Makefile的UPROGS中添加\$U/\_trace\textbackslash。
+    \item 在user.h文件的system calls部分添加trace函数。
+          \newpage
+          \begin{lstlisting}[language=c, title=对user.h的改动]
+    // system calls
+    int fork(void);
+    ...
+    // 添加 trace函数
+    int trace(int);
+    \end{lstlisting}
+    \item 在usys.pl末尾添加entry("trace");以便在汇编语言中添加这个函数。
+    \item 进入kernel文件夹，在syscall.h中添加SYS\_trace系统调用号的定义，值往下类推，即为22。
+          \begin{lstlisting}[language=c, title=对syscall.h的更改]
+    // System call numbers
+    #define SYS_fork 1
+    ...
+    // 为trace添加系统调用号
+    #define SYS_trace 22
+          \end{lstlisting}
+    \item 更改进程结构体。在proc.h中的进程结构体最后添加一个掩码trace\_mask，用于记录哪些进程要被追踪。
+          \begin{lstlisting}[language=c, title=对进程结构体的更改]
+    struct proc
+    {
+        struct spinlock lock;
+        ...
+        // 添加掩码
+        int trace_mask;
+    };
+    \end{lstlisting}
+    \item 在sysproc.c文件中，添加系统调用函数sys\_trace，在调用时设置掩码。
+          \begin{lstlisting}[language=c, title=实现sys\_trace系统调用]
+    uint64 sys_trace(void)
+    {
+        // 获取参数
+        int mask;
+        if (argint(0, &mask) < 0)
+            return -1;
+        // 获取当前进程
+        struct proc *p = myproc();
+        // 写入掩码
+        p->trace_mask = mask;
+        return 0;
+    }
+    \end{lstlisting}
+    \item 在syscall.c中修改syscall函数，使其根据掩码判断是否输出当前调用信息。
+          \begin{lstlisting}[language=c, title=对syscall函数的修改]
+    void syscall(void)
+    {
+        int num;
+        struct proc *p = myproc();
+
+        num = p->trapframe->a7;
+        if (num > 0 && num < NELEM(syscalls) && syscalls[num])
+        {
+            p->trapframe->a0 = syscalls[num]();
+
+            // 获得掩码
+            int trace_mask = p->trace_mask;
+
+            // 如果掩码对应，输出当前系统调用信息
+            if ((trace_mask >> num) & 1)
+            {
+                printf("%d: syscall %s -> %d\n", 
+                        p->pid, 
+                        syscall_names[num - 1], 
+                        p->trapframe->a0);
+            }
+        }
+        else
+        {
+            ...
+        }
+    }
+    \end{lstlisting}
+    \item 修改proc.c中的freeproc函数和fork函数，确保掩码在进程释放时重置掩码、在子进程创建时传递掩码。
+          \newpage
+          \begin{lstlisting}[language=c, title=对proc.c的修改]
+    static void freeproc(struct proc *p)
+    {
+        if (p->trapframe)
+        kfree((void *)p->trapframe);
+        ...
+
+        // 添加了这一行
+        p->trace_mask = 0;
+    }
+
+    int fork(void)
+    {
+        ...
+
+        // 把子进程的掩码也设置为与父进程相同
+        np->trace_mask = p->trace_mask;
+
+        ...
+    }
+    \end{lstlisting}
+\end{enumerate}

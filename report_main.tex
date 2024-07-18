@@ -1,0 +1,55 @@
+\documentclass[fontset=windows]{article}
+\usepackage{ctex}
+\usepackage[margin=1in]{geometry}%设置边距，符合Word设定
+\usepackage{listings}
+\usepackage{color}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{setspace}
+\usepackage{booktabs,multirow}
+\usepackage{float}
+\usepackage{subfigure}
+\usepackage[graphicx]{realboxes}
+\usepackage[hidelinks]{hyperref}
+
+
+\lstset{
+    columns=fullflexible,
+    language=bash,
+    basicstyle=\ttfamily,
+    showstringspaces=false,
+    commentstyle=\color{BlueGreen},
+    keywordstyle=\color{blue},
+    breaklines=true, 
+    frame=tb
+}
+
+\def\lstlistingname{代码}
+
+\AtBeginDocument{\counterwithin{lstlisting}{section}}
+
+\renewcommand\thefigure{\arabic{section}-\arabic{figure}}
+
+\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}
+
+\title{\heiti\zihao{2} 操作系统课程设计实验报告}
+
+\author{\fangsong 黄毅成}
+\date{2024.7.16}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\begin{center}
+    \tableofcontents
+\end{center}
+
+
+\newpage
+
+\input{Xv6 and Unix utilities.tex}
+
+\input{system calls.tex}
+
+\end{document}

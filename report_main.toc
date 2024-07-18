@@ -1,0 +1,15 @@
+\contentsline {section}{\numberline {1}Lab: Xv6 and Unix utilities}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}实验目的}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}实验步骤}{2}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}运行xv6}{2}{subsubsection.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.2.2}实现sleep}{3}{subsubsection.1.2.2}%
+\contentsline {subsubsection}{\numberline {1.2.3}实现pingpong}{3}{subsubsection.1.2.3}%
+\contentsline {subsubsection}{\numberline {1.2.4}实现 prime}{4}{subsubsection.1.2.4}%
+\contentsline {subsubsection}{\numberline {1.2.5}实现 find}{7}{subsubsection.1.2.5}%
+\contentsline {subsubsection}{\numberline {1.2.6}实现 xargs}{9}{subsubsection.1.2.6}%
+\contentsline {subsection}{\numberline {1.3}评测结果}{10}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}实验小结}{11}{subsection.1.4}%
+\contentsline {section}{\numberline {2}Lab: System calls}{11}{section.2}%
+\contentsline {subsection}{\numberline {2.1}实验目的}{11}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}实验步骤}{11}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}实现trace}{11}{subsubsection.2.2.1}%
