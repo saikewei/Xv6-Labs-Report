@@ -113,3 +113,85 @@
     }
     \end{lstlisting}
 \end{enumerate}
+
+\subsubsection{实现sysinfo}
+\begin{enumerate}
+    \item 首先，先仿照trace中的方法，在Makefile、syscall.h、syscall.c、user.h、user.pl中注册名为sysinfo的系统调用。
+    \item 在kalloc.c中仿照kalloc函数读取空闲内存链表的方式，实现一个计算空闲内存空间大小的函数acquire\_freeman。
+          \begin{lstlisting}[language=c, title=acquire\_freemem的实现]
+    uint64 acquire_freemem()
+    {
+        struct run *r;
+        uint64 cnt = 0;
+
+        // 锁
+        acquire(&kmem.lock);
+        r = kmem.freelist;
+        // 遍历链表
+        while (r)
+        {
+            r = r->next;
+            cnt++;
+        }
+        // 释放锁
+        release(&kmem.lock);
+        // 返回空间大小（页数乘页尺寸）
+        return cnt * PGSIZE;
+    }
+    \end{lstlisting}
+    \item 在proc.c中，实现一个计算非使用状态进程个数的函数acquire\_nproc，利用记录进程的数组struct proc proc[NPROC]。
+          \begin{lstlisting}[language=c, title=acquire\_nproc的实现]
+    uint64 acquire_nproc()
+    {
+        struct proc *p;
+        int cnt = 0;
+    
+        for (p = proc; p < &proc[NPROC]; ++p)
+        {
+            acquire(&p->lock);
+            if (p->state != UNUSED)
+                cnt++;
+            release(&p->lock);
+        }
+    
+        return cnt;
+    }    
+    \end{lstlisting}
+    \item 最后，在sysproc.c中完成sys\_sysinfo函数的实现。利用argaddr读取参数的地址，利用copyout对地址进行写入。
+          \begin{lstlisting}[language=c, title=sys\_sysinfo的实现]
+    uint64 sys_sysinfo(void)
+    {
+        struct sysinfo info;
+        uint64 addr;
+        struct proc *p = myproc();
+
+        // 计算空闲进程数
+        info.nproc = acquire_nproc();
+        // 计算空闲内存数
+        info.freemem = acquire_freemem();
+
+        // 获取参数
+        if (argaddr(0, &addr) < 0)
+            return -1;
+        // 写入结构体
+        if (copyout(p->pagetable, addr, (char *)&info, sizeof(info)) < 0)
+            return -1;
+        return 0;
+    }
+    \end{lstlisting}
+\end{enumerate}
+
+\subsection{评测结果}
+利用grade-lab-syscall脚本评测，得到评测结果如图\ref{fig:syscall}所示。
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{pics/syscall评测结果.png}
+    \caption{评测结果}
+    \label{fig:syscall}
+\end{figure}
+
+\subsection{实验小结}
+
+在本实验中，我实现了两个系统调用。通过实验，我了解到了在内核中实现系统调用的一整套流程。
+
+在实验中，为了实现我自己的系统调用，我阅读了许多kernel的代码，对内核有了更好的了解。通过仿照内核代码中一些函数的实现以及提示，我才得以完成我自己的系统调用。这次试验大大加深了我对系统调用的了解，为之后的实验打下基础。
