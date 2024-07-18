@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.25)  18 JUL 2024 14:39
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.25)  18 JUL 2024 15:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -652,7 +652,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
  [1
 
-] (./Xv6 and Unix utilities.tex (e:/texlive/2023/texmf-dist/tex/latex/listings/lstlang1.sty
+] (./chapters/Xv6 and Unix utilities.tex (e:/texlive/2023/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 ) (e:/texlive/2023/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
@@ -670,17 +670,17 @@ File: pics/util评测结果.png Graphic file (type bmp)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[10]) (./system calls.tex [11] [12] [13]) [14] (./report_main.aux)
+[10]) (./chapters/system calls.tex [11] [12] [13]) [14] (./report_main.aux)
 Package rerunfilecheck Info: File `report_main.out' has not changed.
 (rerunfilecheck)             Checksum: 57C6EC060A1675830D3A0CB21D0F20A0;1644.
  ) 
 Here is how much of TeX's memory you used:
- 17285 strings out of 478580
- 367538 string characters out of 5846528
+ 17286 strings out of 478580
+ 367619 string characters out of 5846528
  2027012 words of memory out of 5000000
  37107 multiletter control sequences out of 15000+600000
  518277 words of font info for 89 fonts, out of 8000000 for 9000
  62 hyphenation exceptions out of 8191
- 89i,7n,97p,472b,1940s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,7n,97p,481b,1940s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 Output written on report_main.pdf (14 pages).
