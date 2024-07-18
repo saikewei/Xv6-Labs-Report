@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.25)  18 JUL 2024 20:30
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.25)  18 JUL 2024 22:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -677,14 +677,8 @@ File: pics/syscall评测结果.png Graphic file (type bmp)
 File: pics/pagetable评测结果.png Graphic file (type bmp)
 <pics/pagetable评测结果.png>
  [22]) [23] (./report_main.aux)
-
-Package rerunfilecheck Warning: File `report_main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `report_main.out':
-(rerunfilecheck)             Before: 59A3C83CE777D14FA4A2511360E81C16;2731
-(rerunfilecheck)             After:  8E6E440E3CCE4F58B025E2066B894D1E;2821.
+Package rerunfilecheck Info: File `report_main.out' has not changed.
+(rerunfilecheck)             Checksum: 8E6E440E3CCE4F58B025E2066B894D1E;2821.
  ) 
 Here is how much of TeX's memory you used:
  17466 strings out of 478580
