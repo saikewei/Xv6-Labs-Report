@@ -10,6 +10,10 @@
 \usepackage{subfigure}
 \usepackage[graphicx]{realboxes}
 \usepackage[hidelinks]{hyperref}
+\usepackage{titling}
+
+\renewcommand\maketitlehooka{\null\mbox{}\vfill}
+\renewcommand\maketitlehookd{\vfill\null}
 
 
 \lstset{
@@ -38,20 +42,25 @@
 
 \begin{document}
 
-\maketitle
-\thispagestyle{empty}
+\begin{titlingpage}
+    \maketitle
+\end{titlingpage}
 
 \begin{center}
+    \pagenumbering{Roman}
     \tableofcontents
 \end{center}
 
 
 \newpage
+\pagenumbering{arabic}
 
 \input{chapters/Xv6 and Unix utilities.tex}
 
 \input{chapters/system calls.tex}
 
 \input{chapters/Page table.tex}
+
+\input{chapters/traps.tex}
 
 \end{document}
