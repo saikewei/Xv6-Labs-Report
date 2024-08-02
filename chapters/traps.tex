@@ -164,3 +164,126 @@ y 的值。其具体值受先前调用的影响。
     }
     \end{lstlisting}
 \end{enumerate}
+
+\subsubsection{实现alarm}
+\begin{enumerate}
+    \item 首先，修改user.pl、user.h、syscall.h、syscall.c，添加两个系统调用sigalarm和sigreturn，方法与前文相同。sigreturn不接受任何参数，而sigalarm为int sigalarm(int ticks, void (*handler)())。
+    \item 修改proc.h中的进程结构体，添加一些新成员，用于记录程序的中断信息。
+          \begin{lstlisting}[language=c, title=对进程结构体的修改]
+    struct proc
+    {
+        ...
+
+        int ticks; // 记录进程运行的tick
+        int ticks_cnt; // tick计数
+        uint64 handler; // 处理程序的入口地址
+        struct trapframe tick_trapframe; // 记录进程运行上下文
+        int handler_executing; // 记录当前处理程序是否允许的状态量
+    };
+    \end{lstlisting}
+    \item 修改proc.c中的allocproc函数，添加对结构体新成员的初始化。
+          \begin{lstlisting}[language=c,title=对allocproc函数的修改]
+    static struct proc *
+    allocproc(void)
+    {
+        ...
+
+        p->ticks = 0;
+        p->handler_executing = 0;
+
+        return p;
+    }
+    \end{lstlisting}
+    \item 在sysproc.c中添加sigalarm和sigreturn函数的实现。实现中断程序的跳转和恢复。
+          \begin{lstlisting}[language=c,title=sys\_sigalarm的实现]
+    uint64 sys_sigalarm(void)
+    {
+        int ticks;           // 定义变量ticks，用于存储定时器的滴答数
+        uint64 handler;      // 定义变量handler，用于存储信号处理函数的地址
+
+        // 获取第一个参数的值并赋给ticks
+        argint(0, &ticks);   
+        // 获取第二个参数的值并赋给handler
+        argaddr(1, &handler);
+
+        // 获取当前进程的指针
+        struct proc *p = myproc();
+        // 设置当前进程的定时器滴答数
+        p->ticks = ticks;
+        // 设置当前进程的信号处理函数
+        p->handler = handler;
+        // 初始化滴答计数器为0
+        p->ticks_cnt = 0;
+
+        // 返回0，表示成功
+        return 0;
+    }
+    \end{lstlisting}
+          \newpage
+          \begin{lstlisting}[language=c,title=sys\_sigreturn的实现]
+    // 定义sys_sigreturn函数，返回类型为uint64
+    uint64 sys_sigreturn(void)
+    {
+        // 获取当前进程的指针
+        struct proc *p = myproc();
+    
+        // 将当前进程的trapframe恢复为tick_trapframe
+        *(p->trapframe) = p->tick_trapframe;
+    
+        // 设置handler_executing为0，表示处理函数执行完毕
+        p->handler_executing = 0;
+        
+        // 返回0，表示成功
+        return 0;
+    }
+        \end{lstlisting}
+    \item 修改trap.c文件中的usertrap函数，定义操作系统处理中断的行为。
+          \begin{lstlisting}[language=c,title=对usertrap函数的修改]
+    void usertrap(void)
+    {
+        ...
+
+        // 如果这是一个时钟中断，则可能需要让出 CPU
+        if (which_dev == 2)
+        {
+            // 检查进程是否设置了定时器
+            if (p->ticks > 0)
+            {
+                p->ticks_cnt++;  // 增加定时器计数
+
+                // 如果信号处理程序未在执行中且计数器超过了设定的滴答数
+                if (p->handler_executing == 0 && p->ticks_cnt > p->ticks)
+                {
+                    p->ticks_cnt = 0;  // 重置计数器
+                    p->tick_trapframe = *(p->trapframe);  // 保存当前的 trapframe
+                    p->trapframe->epc = p->handler;  // 设置程序计数器为信号处理程序的地址
+                    p->handler_executing = 1;  // 标记信号处理程序正在执行
+                }
+            }
+
+            // 放弃 CPU，使其他进程能够运行
+            yield();
+        }
+
+        // 恢复到用户模式继续执行
+        usertrapret();
+    }
+    \end{lstlisting}
+\end{enumerate}
+\subsection{评测结果}
+利用 grade-lab-traps 脚本评测，得到评测结果如图\ref{fig:traps}所示。
+{fig:syscall}所示。
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\linewidth]{pics/traps评测结果.png}
+    \caption{评测结果}
+    \label{fig:traps}
+\end{figure}
+
+
+\subsection{实验小结}
+本次实验通过实现系统调用和陷阱机制，深入理解了操作系统的核心功能。
+
+这些操作增强了我对计算机体系结构、异常处理机制和系统调用流程的理解。通过实际编写和测试系统调用，我更好地理解了用户态和内核态之间的交互机制，以及系统调用是如何在硬件和操作系统之间传递控制权的。实现陷阱机制和backtrace功能，使我熟悉了如何捕获和处理异常，以及如何在错误发生时进行有效的调试和错误定位。添加定时提醒功能（sigalarm）使我了解了如何在操作系统中实现高级特性，从而提高系统的可用性和可靠性。通过设置定时器，可以更好地理解系统中断。
+
+总的来说，本次实验不仅增强了我对操作系统原理的理解，还提升了我在实际系统开发中的调试和错误处理能力。
