@@ -697,14 +697,8 @@ File: pics/cow评测结果.png Graphic file (type bmp)
 File: pics/thread评测结果.png Graphic file (type bmp)
 <pics/thread评测结果.png>
 ) [42] (./report_main.aux)
-
-Package rerunfilecheck Warning: File `report_main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `report_main.out':
-(rerunfilecheck)             Before: F0A875C54A61A304ABE4350D684F846A;5187
-(rerunfilecheck)             After:  C082C30DD5895A7999A5BAFE76C50152;5277.
+Package rerunfilecheck Info: File `report_main.out' has not changed.
+(rerunfilecheck)             Checksum: C082C30DD5895A7999A5BAFE76C50152;5277.
  ) 
 Here is how much of TeX's memory you used:
  18452 strings out of 478580
