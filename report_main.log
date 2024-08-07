@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.25)  6 AUG 2024 18:46
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.25)  7 AUG 2024 19:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -693,17 +693,26 @@ File: pics/traps评测结果.png Graphic file (type bmp)
 ) [30] (./chapters/Copy-on-Write Fork.tex [31] [32] [33] [34] [35]
 File: pics/cow评测结果.png Graphic file (type bmp)
 <pics/cow评测结果.png>
-) [36] (./report_main.aux)
-Package rerunfilecheck Info: File `report_main.out' has not changed.
-(rerunfilecheck)             Checksum: A39B977042321C65AE2018A292256A8A;4241.
+) (./chapters/thread.tex [36] [37] [38] [39] [40] [41]
+File: pics/thread评测结果.png Graphic file (type bmp)
+<pics/thread评测结果.png>
+) [42] (./report_main.aux)
+
+Package rerunfilecheck Warning: File `report_main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `report_main.out':
+(rerunfilecheck)             Before: F0A875C54A61A304ABE4350D684F846A;5187
+(rerunfilecheck)             After:  C082C30DD5895A7999A5BAFE76C50152;5277.
  ) 
 Here is how much of TeX's memory you used:
- 18282 strings out of 478580
- 383015 string characters out of 5846528
+ 18452 strings out of 478580
+ 386434 string characters out of 5846528
  2027012 words of memory out of 5000000
- 38078 multiletter control sequences out of 15000+600000
+ 38244 multiletter control sequences out of 15000+600000
  518277 words of font info for 89 fonts, out of 8000000 for 9000
  62 hyphenation exceptions out of 8191
  89i,7n,97p,481b,2263s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on report_main.pdf (39 pages).
+Output written on report_main.pdf (45 pages).
