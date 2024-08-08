@@ -45,3 +45,8 @@
 \contentsline {subsubsection}{\numberline {6.2.3}实现barrier}{41}{subsubsection.6.2.3}%
 \contentsline {subsection}{\numberline {6.3}评测结果}{42}{subsection.6.3}%
 \contentsline {subsection}{\numberline {6.4}实验小结}{42}{subsection.6.4}%
+\contentsline {section}{\numberline {7}Lab: networking}{42}{section.7}%
+\contentsline {subsection}{\numberline {7.1}实验目的}{42}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}实验步骤}{43}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}评测结果}{45}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}实验小结}{46}{subsection.7.4}%
