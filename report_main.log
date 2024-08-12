@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.25)  11 AUG 2024 19:16
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.25)  12 AUG 2024 12:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -657,7 +657,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \tf@toc=\write4
 \openout4 = `report_main.toc'.
 
- [2] (./chapters/Xv6 and Unix utilities.tex (e:/texlive/2023/texmf-dist/tex/latex/listings/lstlang1.sty
+ [2] [3] (./chapters/Xv6 and Unix utilities.tex (e:/texlive/2023/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 ) (e:/texlive/2023/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
@@ -709,17 +709,27 @@ File: pics/lock评测结果.png Graphic file (type bmp)
 ) (./chapters/file system.tex [55] [56] [57] [58] [59] [60] [61]
 File: pics/fs评测结果.png Graphic file (type bmp)
 <pics/fs评测结果.png>
- [62]) [63] (./report_main.aux)
+ [62]) (./chapters/mmap.tex [63] [64] [65] [66] [67] [68] [69]
+File: pics/mmap评测结果.png Graphic file (type bmp)
+<pics/mmap评测结果.png>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) [70] [71] (./report_main.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `report_main.out' has not changed.
-(rerunfilecheck)             Checksum: 0198E0DE504D08925EB3184A023508DC;7319.
+(rerunfilecheck)             Checksum: 5D9591EB6AB4024D22D33BF02D7C001F;7780.
  ) 
 Here is how much of TeX's memory you used:
- 18752 strings out of 478580
- 391879 string characters out of 5846528
+ 18803 strings out of 478580
+ 392605 string characters out of 5846528
  2067012 words of memory out of 5000000
- 38532 multiletter control sequences out of 15000+600000
+ 38579 multiletter control sequences out of 15000+600000
  518277 words of font info for 89 fonts, out of 8000000 for 9000
  62 hyphenation exceptions out of 8191
  89i,7n,97p,481b,2263s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on report_main.pdf (66 pages).
+Output written on report_main.pdf (75 pages).

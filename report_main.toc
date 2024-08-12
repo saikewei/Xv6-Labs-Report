@@ -64,3 +64,8 @@
 \contentsline {subsubsection}{\numberline {9.2.2}实现Symbolic links}{60}{subsubsection.9.2.2}%
 \contentsline {subsection}{\numberline {9.3}评测结果}{62}{subsection.9.3}%
 \contentsline {subsection}{\numberline {9.4}实验小结}{62}{subsection.9.4}%
+\contentsline {section}{\numberline {10}Lab: mmap}{63}{section.10}%
+\contentsline {subsection}{\numberline {10.1}实验目的}{63}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}实验步骤}{63}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}评测结果}{70}{subsection.10.3}%
+\contentsline {subsection}{\numberline {10.4}实验小结}{70}{subsection.10.4}%
